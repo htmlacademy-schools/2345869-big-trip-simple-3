@@ -1,12 +1,16 @@
 import { render } from './render.js';
-import FilterView from './view/filters-view.js';
-import PointListPresenter from './presenter.js';
+import FilterView from './view/filter-view.js';
+import SortView from './view/sort-view.js';
+import PointListPresenter from './presenter/point-list-presenter.js';
+import PointsModel from './model/points-model.js';
 
-const controlsFiltersElement = document.querySelector('.trip-controls__filters');
-const eventsElement = document.querySelector('.trip-events');
+const tripControlsFiltersElement = document.querySelector('.trip-controls__filters');
+const tripEventsElement = document.querySelector('.trip-events');
 
-const pointListPresenter = new PointListPresenter({pointListContainer: eventsElement});
+const pointsModel = new PointsModel();
+const pointListPresenter = new PointListPresenter();
 
-render(new FilterView, controlsFiltersElement);
+render(new FilterView(), tripControlsFiltersElement);
+render(new SortView(), tripEventsElement);
 
-pointListPresenter.init();
+pointListPresenter.init(tripEventsElement, pointsModel);
