@@ -231,3 +231,4 @@ export default class TripPointEditView extends AbstractStatefulView {
     return point;
   };
 }
+// module6
